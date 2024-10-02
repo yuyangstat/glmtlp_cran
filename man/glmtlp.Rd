@@ -197,7 +197,7 @@ and the \code{cv.glmtlp} function.
 
 Authors:
 \itemize{
-  \item Chunlin Li \email{li000007@umn.edu} (\href{https://orcid.org/0000-0003-2989-8785}{ORCID}) [copyright holder]
+  \item Chunlin Li \email{chunlin@iastate.edu} (\href{https://orcid.org/0000-0003-2989-8785}{ORCID}) [copyright holder]
   \item Chong Wu (\href{https://orcid.org/0000-0002-8400-1785}{ORCID}) [copyright holder]
 }
 
