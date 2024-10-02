@@ -13,11 +13,9 @@
 <img src="man/figures/README-GLMTLP.png" alt="glmtp icon" width="80%"/>
 </p>
 
-Efficient procedures for constrained likelihood estimation and inference
-with truncated lasso penalty (Shen et al., 2010; Zhang 2010) for linear,
-generalized linear, and Gaussian graphical models.
+Efficient procedures for constrained likelihood estimation with truncated lasso penalty (Shen et al., 2010; Zhang 2010) for linear and generalized linear models.
 
-**Note**: this is a repo for the version published on CRAN. Please check [chunlinli/glmtlp](https://github.com/chunlinli/glmtlp) for new features such as constrained likelihood inference, regression on summary data, memory efficiency, and more.
+**Note**: this is a repo for the version published on CRAN. Please check [chunlinli/glmtlp](https://github.com/chunlinli/glmtlp) for new features such as constrained likelihood inference, regression on summary data, memory efficiency, Gaussian graphical models, and more.
 
 ## Installation
 
@@ -49,7 +47,7 @@ coef(cv.fit)[abs(coef(cv.fit)) > 0]
 plot(cv.fit)
 ```
 
-<img src="man/figures/README-example1-1.png" width="100%" />
+<img src="man/figures/README-example1-1.png" alt="cross-validation plot using TLP penalty" width="100%" />
 
 ``` r
 
@@ -69,7 +67,7 @@ predict(fit, X = gau_data$X[1:5, ], lambda = cv.fit$lambda.min)
 plot(fit, xvar = "log_lambda", label = TRUE)
 ```
 
-<img src="man/figures/README-example1-2.png" width="100%" />
+<img src="man/figures/README-example1-2.png" alt="solution path plot for single model fit using TLP penalty" width="100%" />
 
 ``` r
 # Cross-Validation using L0 penalty
@@ -80,7 +78,7 @@ coef(cv.fit)[abs(coef(cv.fit)) > 0]
 plot(cv.fit)
 ```
 
-<img src="man/figures/README-example2-1.png" width="100%" />
+<img src="man/figures/README-example2-1.png" alt="cross-validation plot using L0 penalty" width="100%" />
 
 ``` r
 # Single Model Fit using L0 penalty
@@ -99,7 +97,7 @@ predict(fit, X = gau_data$X[1:5, ], kappa = cv.fit$kappa.min)
 plot(fit, xvar = "kappa", label = TRUE)
 ```
 
-<img src="man/figures/README-example2-2.png" width="100%" />
+<img src="man/figures/README-example2-2.png" alt="solution path plot for single model fit using L0 penalty" width="100%" />
 
 ``` r
 # Cross-Validation using L1 penalty
@@ -114,7 +112,7 @@ coef(cv.fit)[abs(coef(cv.fit)) > 0]
 plot(cv.fit)
 ```
 
-<img src="man/figures/README-example3-1.png" width="100%" />
+<img src="man/figures/README-example3-1.png" alt="cross-validation plot using L1 penalty" width="100%" />
 
 ``` r
 # Single Model Fit using L1 penalty
@@ -133,7 +131,7 @@ predict(fit, X = gau_data$X[1:5, ], lambda = cv.fit$lambda.min)
 plot(fit, xvar = "lambda", label = TRUE)
 ```
 
-<img src="man/figures/README-example3-2.png" width="100%" />
+<img src="man/figures/README-example3-2.png" alt="solution path plot for single model fit using L1 penalty" width="100%" />
 
 ## Examples for Logistic Regression Models
 
@@ -159,7 +157,7 @@ plot(cv.fit)
 #> (`geom_point()`).
 ```
 
-<img src="man/figures/README-example4-1.png" width="100%" />
+<img src="man/figures/README-example4-1.png" alt="cross-validation plot using TLP penalty for binary data" width="100%" />
 
 ``` r
 # Single Model Fit using TLP penalty
@@ -176,7 +174,7 @@ predict(fit, X = bin_data$X[1:5, ], type = "response", lambda = cv.fit$lambda.mi
 plot(fit, xvar = "log_lambda", label = TRUE)
 ```
 
-<img src="man/figures/README-example4-2.png" width="100%" />
+<img src="man/figures/README-example4-2.png" alt="solution path plot for single model fit using TLP penalty for binary data" width="100%" />
 
 ``` r
 # Cross-Validation using L0 penalty
@@ -187,7 +185,7 @@ coef(cv.fit)[abs(coef(cv.fit)) > 0]
 plot(cv.fit)
 ```
 
-<img src="man/figures/README-example5-1.png" width="100%" />
+<img src="man/figures/README-example5-1.png" alt="cross-validation plot using L0 penalty for binary data" width="100%" />
 
 ``` r
 # Single Model Fit using L0 penalty
@@ -204,7 +202,7 @@ predict(fit, X = bin_data$X[1:5, ], kappa = cv.fit$kappa.min)
 plot(fit, xvar = "kappa", label = TRUE)
 ```
 
-<img src="man/figures/README-example5-2.png" width="100%" />
+<img src="man/figures/README-example5-2.png" alt="solution path plot for single model fit using L0 penalty for binary data" width="100%" />
 
 ``` r
 # Cross-Validation using L1 penalty
@@ -219,7 +217,7 @@ coef(cv.fit)[abs(coef(cv.fit)) > 0]
 plot(cv.fit)
 ```
 
-<img src="man/figures/README-example6-1.png" width="100%" />
+<img src="man/figures/README-example6-1.png" alt="cross-validation plot using L1 penalty for binary data" width="100%" />
 
 ``` r
 # Single Model Fit using L1 penalty
@@ -238,7 +236,7 @@ predict(fit, X = bin_data$X[1:5, ], type = "response", lambda = cv.fit$lambda.mi
 plot(fit, xvar = "lambda", label = TRUE)
 ```
 
-<img src="man/figures/README-example6-2.png" width="100%" />
+<img src="man/figures/README-example6-2.png" alt="solution path plot for single model fit using L1 penalty for binary data" width="100%" />
 
 ## Citing information
 

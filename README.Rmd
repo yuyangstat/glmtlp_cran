@@ -25,9 +25,9 @@ knitr::opts_chunk$set(
   <img src="man/figures/README-GLMTLP.png" alt="glmtp icon" width="80%"/>
 </p>
 
-Efficient procedures for constrained likelihood estimation and inference with truncated lasso penalty (Shen et al., 2010; Zhang 2010) for linear, generalized linear, and Gaussian graphical models. 
+Efficient procedures for constrained likelihood estimation with truncated lasso penalty (Shen et al., 2010; Zhang 2010) for linear and generalized linear models.
 
-**Note**: this is a repo for the version published on CRAN. Please check [chunlinli/glmtlp](https://github.com/chunlinli/glmtlp) for new features such as constrained likelihood inference, regression on summary data, memory efficiency, and more.
+**Note**: this is a repo for the version published on CRAN. Please check [chunlinli/glmtlp](https://github.com/chunlinli/glmtlp) for new features such as constrained likelihood inference, regression on summary data, memory efficiency, Gaussian graphical models, and more.
 
 ## Installation
 
