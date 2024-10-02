@@ -1,0 +1,163 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# **glmtlp**: An R Package For Truncated Lasso Penalty
+
+<!-- badges: start -->
+[![CRAN version](https://img.shields.io/cran/v/glmtlp?logo=R)](https://cran.r-project.org/package=glmtlp)
+[![downloads](https://cranlogs.r-pkg.org/badges/glmtlp)](https://cran.r-project.org/package=glmtlp)
+[![R-CMD-check](https://github.com/yuyangstat/glmtlp_cran/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/yuyangstat/glmtlp_cran/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
+<p align="center">
+  <img src="man/figures/README-GLMTLP.png" alt="glmtp icon" width="80%"/>
+</p>
+
+Efficient procedures for constrained likelihood estimation and inference with truncated lasso penalty (Shen et al., 2010; Zhang 2010) for linear, generalized linear, and Gaussian graphical models. 
+
+## Installation
+
+You can install the released version of glmtlp from [CRAN](https://CRAN.R-project.org) with:
+
+```{r eval=FALSE}
+install.packages("glmtlp")
+```
+
+## Examples for Gaussian Regression Models
+
+The following are three examples which show you how to use `glmtlp` to fit 
+gaussian regression models:
+
+```{r gau_data}
+library(glmtlp)
+data("gau_data")
+colnames(gau_data$X)[gau_data$beta != 0]
+```
+
+```{r example1}
+# Cross-Validation using TLP penalty
+cv.fit <- cv.glmtlp(gau_data$X, gau_data$y, family = "gaussian", penalty = "tlp", ncores=2)
+coef(cv.fit)[abs(coef(cv.fit)) > 0]
+plot(cv.fit)
+
+# Single Model Fit using TLP penalty
+fit <- glmtlp(gau_data$X, gau_data$y, family = "gaussian", penalty = "tlp")
+coef(fit, lambda = cv.fit$lambda.min)
+predict(fit, X = gau_data$X[1:5, ], lambda = cv.fit$lambda.min)
+plot(fit, xvar = "log_lambda", label = TRUE)
+```
+
+```{r example2}
+# Cross-Validation using L0 penalty
+cv.fit <- cv.glmtlp(gau_data$X, gau_data$y, family = "gaussian", penalty = "l0", ncores=2)
+coef(cv.fit)[abs(coef(cv.fit)) > 0]
+plot(cv.fit)
+# Single Model Fit using L0 penalty
+fit <- glmtlp(gau_data$X, gau_data$y, family = "gaussian", penalty = "l0")
+coef(fit, kappa = cv.fit$kappa.min)
+predict(fit, X = gau_data$X[1:5, ], kappa = cv.fit$kappa.min)
+plot(fit, xvar = "kappa", label = TRUE)
+```
+
+```{r example3}
+# Cross-Validation using L1 penalty
+cv.fit <- cv.glmtlp(gau_data$X, gau_data$y, family = "gaussian", penalty = "l1", ncores=2)
+coef(cv.fit)[abs(coef(cv.fit)) > 0]
+plot(cv.fit)
+# Single Model Fit using L1 penalty
+fit <- glmtlp(gau_data$X, gau_data$y, family = "gaussian", penalty = "l1")
+coef(fit, lambda = cv.fit$lambda.min)
+predict(fit, X = gau_data$X[1:5, ], lambda = cv.fit$lambda.min)
+plot(fit, xvar = "lambda", label = TRUE)
+```
+
+## Examples for Logistic Regression Models
+
+The following are three examples which show you how to use `glmtlp` to fit 
+logistic regression models:
+
+```{r bin_data}
+data("bin_data")
+colnames(bin_data$X)[bin_data$beta != 0]
+```
+
+```{r example4}
+# Cross-Validation using TLP penalty
+cv.fit <- cv.glmtlp(bin_data$X, bin_data$y, family = "binomial", penalty = "tlp", ncores=2)
+coef(cv.fit)[abs(coef(cv.fit)) > 0]
+plot(cv.fit)
+# Single Model Fit using TLP penalty
+fit <- glmtlp(bin_data$X, bin_data$y, family = "binomial", penalty = "tlp")
+coef(fit, lambda = cv.fit$lambda.min)
+predict(fit, X = bin_data$X[1:5, ], type = "response", lambda = cv.fit$lambda.min)
+plot(fit, xvar = "log_lambda", label = TRUE)
+```
+
+```{r example5}
+# Cross-Validation using L0 penalty
+cv.fit <- cv.glmtlp(bin_data$X, bin_data$y, family = "binomial", penalty = "l0", ncores=2)
+coef(cv.fit)[abs(coef(cv.fit)) > 0]
+plot(cv.fit)
+# Single Model Fit using L0 penalty
+fit <- glmtlp(bin_data$X, bin_data$y, family = "binomial", penalty = "l0")
+coef(fit, kappa = cv.fit$kappa.min)
+predict(fit, X = bin_data$X[1:5, ], kappa = cv.fit$kappa.min)
+plot(fit, xvar = "kappa", label = TRUE)
+```
+
+```{r example6}
+# Cross-Validation using L1 penalty
+cv.fit <- cv.glmtlp(bin_data$X, bin_data$y, family = "binomial", penalty = "l1", ncores=2)
+coef(cv.fit)[abs(coef(cv.fit)) > 0]
+plot(cv.fit)
+# Single Model Fit using L1 penalty
+fit <- glmtlp(bin_data$X, bin_data$y, family = "binomial", penalty = "l1")
+coef(fit, lambda = cv.fit$lambda.min)
+predict(fit, X = bin_data$X[1:5, ], type = "response", lambda = cv.fit$lambda.min)
+plot(fit, xvar = "lambda", label = TRUE)
+```
+
+
+## Citing information
+
+If you find this project useful, please consider citing 
+```
+@article{
+    author = {Chunlin Li, Yu Yang, Chong Wu, Xiaotong Shen, Wei Pan},
+    title = {{glmtlp: An R package for truncated Lasso penalty}},
+    year = {2022}
+}
+```
+
+
+## References
+
+Li, C., Shen, X., & Pan, W. (2021). Inference for a large directed graphical model with interventions. *arXiv preprint* arXiv:2110.03805. <https://arxiv.org/abs/2110.03805>.
+
+Shen, X., Pan, W., & Zhu, Y. (2012). Likelihood-based selection and sharp parameter estimation. *Journal of the American Statistical Association*, 107(497), 223-232. <https://doi.org/10.1080/01621459.2011.645783>.
+
+Shen, X., Pan, W., Zhu, Y., & Zhou, H. (2013). On constrained and regularized high-dimensional regression. *Annals of the Institute of Statistical Mathematics*, 65(5), 807-832. <https://doi.org/10.1007/s10463-012-0396-3>.
+
+Tibshirani, R., Bien, J., Friedman, J., Hastie, T., Simon, N., Taylor, J., & Tibshirani, R. J. (2012). Strong rules for discarding predictors in lasso‐type problems. *Journal of the Royal Statistical Society: Series B (Statistical Methodology)*, 74(2), 245-266. <https://doi.org/10.1111/j.1467-9868.2011.01004.x>.
+
+Yang, Y. & Zou, H. A coordinate majorization descent algorithm for l1 penalized learning. *Journal of Statistical Computation and Simulation* 84.1 (2014): 84-95. <https://doi.org/10.1080/00949655.2012.695374>.
+
+Zhu, Y., Shen, X., & Pan, W. (2020). On high-dimensional constrained maximum likelihood inference. *Journal of the American Statistical Association*, 115(529), 217-230. <https://doi.org/10.1080/01621459.2018.1540986>.
+
+Zhu, Y. (2017). An augmented ADMM algorithm with application to the generalized lasso problem. *Journal of Computational and Graphical Statistics*, 26(1), 195-204. <https://doi.org/10.1080/10618600.2015.1114491>.
+
+Part of the code is adapted from [**glmnet**](https://github.com/cran/glmnet), [**ncvreg**](https://github.com/pbreheny/ncvreg/), and [**biglasso**](https://github.com/pbreheny/biglasso/).
+
+**Warm thanks to the authors of above open-sourced softwares.**
