@@ -18,7 +18,7 @@
 **********/
 
 #include <cmath>    // abs
-#include <iostream> // printf
+#include <algorithm> // copy
 #include "algo.h"
 #include "glmtlp.h"
 #include "utils.h"

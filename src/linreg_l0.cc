@@ -19,6 +19,7 @@
 
 #include <cmath>    
 #include <queue>
+#include <algorithm> // fill, copy
 #include "algo.h"
 #include "glmtlp.h"
 #include "utils.h"

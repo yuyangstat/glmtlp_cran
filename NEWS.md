@@ -1,3 +1,11 @@
+# glmtlp 2.0.3
+
+- Add the missing `<algorithm>` include to the C++ sources that call
+  `std::fill` and `std::copy`. These previously compiled only because
+  libc++ pulled the header in transitively; libc++ 23 removed those
+  transitive includes, which broke compilation under clang 23.
+- Drop the unused `<iostream>` include from four sources.
+
 # glmtlp 2.0.2
 
 - Fix the Remapping issue regarding C++.

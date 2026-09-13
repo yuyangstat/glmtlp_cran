@@ -18,7 +18,7 @@
 **********/
 
 #include <cmath>    // exp, abs
-#include <iostream> // printf
+#include <algorithm> // fill, copy
 #include "algo.h"
 #include "glmtlp.h"
 #include "utils.h"

@@ -1,8 +1,8 @@
 Package: glmtlp
 Type: Package
 Title: Generalized Linear Models with Truncated Lasso Penalty
-Version: 2.0.2
-Date: 2024-10-01
+Version: 2.0.3
+Date: 2026-09-13
 Authors@R: c(
     person("Chunlin", "Li", , "chunlin@iastate.edu", role = c("aut", "cph"),
            comment = c(ORCID = "0000-0003-2989-8785")),
